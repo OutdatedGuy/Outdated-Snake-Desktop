@@ -1,0 +1,5 @@
+.env
+node_modules/
+out/
+dist/
+outdated-snake Setup 1.0.0.exe

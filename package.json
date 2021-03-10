@@ -1,0 +1,70 @@
+{
+	"name": "outdated-snake",
+	"version": "1.0.0",
+	"description": "Outdated Snake Game Using Electron",
+	"main": "index.js",
+	"scripts": {
+		"start": "electron .",
+		"dist": "electron-builder build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/OutdatedGuy/Outdated-Snake.git"
+	},
+	"author": "OutdatedGuy",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/OutdatedGuy/Outdated-Snake/issues"
+	},
+	"homepage": "https://github.com/OutdatedGuy/Outdated-Snake#readme",
+	"devDependencies": {
+		"@electron-forge/cli": "^6.0.0-beta.54",
+		"@electron-forge/maker-deb": "^6.0.0-beta.54",
+		"@electron-forge/maker-rpm": "^6.0.0-beta.54",
+		"@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+		"@electron-forge/maker-zip": "^6.0.0-beta.54",
+		"electron": "^12.0.0",
+		"electron-builder": "^22.10.5"
+	},
+	"dependencies": {
+		"dotenv": "^8.2.0",
+		"electron-squirrel-startup": "^1.0.0",
+		"express": "^4.17.1",
+		"firebase": "^8.2.10",
+		"nodemon": "^2.0.7",
+		"path": "^0.12.7"
+	},
+	"build": {
+		"win": {
+			"target": "nsis",
+			"icon": "build/icon.ico"
+		}
+	},
+	"config": {
+		"forge": {
+			"packagerConfig": {},
+			"makers": [
+				{
+					"name": "@electron-forge/maker-squirrel",
+					"config": {
+						"name": "electron_project"
+					}
+				},
+				{
+					"name": "@electron-forge/maker-zip",
+					"platforms": [
+						"darwin"
+					]
+				},
+				{
+					"name": "@electron-forge/maker-deb",
+					"config": {}
+				},
+				{
+					"name": "@electron-forge/maker-rpm",
+					"config": {}
+				}
+			]
+		}
+	}
+}
