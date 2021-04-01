@@ -19,6 +19,7 @@ let appleImg;
 let pearImg;
 let orangeImg;
 let bananaImg;
+let change = true;
 
 function preload() {
 	deadSound = loadSound("sounds/Oof.mp3");
@@ -160,6 +161,7 @@ class SnakeBody {
 	move() {
 		this.x = this.x + this.xSpeed;
 		this.y = this.y + this.ySpeed;
+		change = true;
 	}
 	show() {
 		fill(0, 255, 0);
@@ -202,7 +204,7 @@ function keyPressed() {
 			end = 0;
 		}
 	}
-	if (end == 0) {
+	if (end == 0 && change) {
 		if ((keyCode === LEFT_ARROW || keyCode === 65) && snake[0].xSpeed < 1) {
 			snake[0].updateSpeed(-1, 0);
 		} else if (
@@ -221,6 +223,14 @@ function keyPressed() {
 		) {
 			snake[0].updateSpeed(0, 1);
 		}
+
+		if (
+			keyCode === LEFT_ARROW ||
+			keyCode === RIGHT_ARROW ||
+			keyCode === UP_ARROW ||
+			keyCode === DOWN_ARROW
+		)
+			change = false;
 	}
 	if (keyCode === 66) {
 		if (end == 0) {
