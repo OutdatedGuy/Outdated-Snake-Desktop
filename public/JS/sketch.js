@@ -12,7 +12,6 @@ var times;
 var record1 = [];
 var record2 = [];
 var submit = 0;
-var ref;
 let eatSound;
 let deadSound;
 let appleImg;
@@ -20,6 +19,7 @@ let pearImg;
 let orangeImg;
 let bananaImg;
 let change = true;
+let noInternet = false;
 
 function preload() {
 	deadSound = loadSound("sounds/Oof.mp3");
@@ -87,7 +87,10 @@ async function getScore() {
 		},
 		body: JSON.stringify(data1),
 	};
-	var response = await fetch("https://outdated-snake.herokuapp.com/getTheScore", none);
+	var response = await fetch(
+		"https://outdated-snake.herokuapp.com/getTheScore",
+		none
+	);
 	var SCORE = await response.json();
 	record1 = SCORE.lvl1;
 	record2 = SCORE.lvl2;
@@ -244,7 +247,7 @@ function keyPressed() {
 			endScreen();
 		}
 	}
-	if ((end == 1 || end == 3) && keyCode === 72) {
+	if ((end == 1 || end == 3) && keyCode === 72 && !noInternet) {
 		highscoreScreen();
 	}
 	if (end > 0 && end != 2 && keyCode == ENTER) {
@@ -258,11 +261,18 @@ function mousePressed() {
 	var hor = width / 4;
 	var ver = height / 2;
 	if (
-		end > 0 &&
-		mouseX > 2 * hor + 10 &&
-		mouseX < 2 * hor + 110 &&
-		mouseY > ver + 45 &&
-		mouseY < ver + 75
+		(end > 0 &&
+			mouseX > 2 * hor + 10 &&
+			mouseX < 2 * hor + 110 &&
+			mouseY > ver + 45 &&
+			mouseY < ver + 75 &&
+			!noInternet) ||
+		(end > 0 &&
+			mouseX > 2 * hor - 50 &&
+			mouseX < 2 * hor + 50 &&
+			mouseY > ver + 45 &&
+			mouseY < ver + 75 &&
+			noInternet)
 	) {
 		removeElements();
 		lambi = 0;
@@ -299,7 +309,8 @@ function mousePressed() {
 		mouseX > 2 * hor - 110 &&
 		mouseX < 2 * hor - 10 &&
 		mouseY > ver + 45 &&
-		mouseY < ver + 75
+		mouseY < ver + 75 &&
+		!noInternet
 	) {
 		if (submit == 0) {
 			submitScreen();
@@ -338,7 +349,8 @@ function mousePressed() {
 		mouseX > width / 2 - 70 &&
 		mouseX < width / 2 + 70 &&
 		mouseY > ver + 85 &&
-		mouseY < ver + 115
+		mouseY < ver + 115 &&
+		!noInternet
 	) {
 		highscoreScreen();
 	}
@@ -417,10 +429,37 @@ function gameScreen() {
 }
 
 function endScreen() {
+	noInternet = false;
 	bubbleSort1();
 	bubbleSort2();
 
 	background(60);
+	if (record1.length == 0 || record2.length == 0) {
+		noInternet = true;
+		stroke(255, 0, 0);
+		strokeWeight(3);
+		fill(255, 150, 200);
+		textAlign(CENTER);
+		textSize(40);
+		text("NO Internet...", width / 2, 3 * blocks);
+		stroke(255, 0, 0);
+		strokeWeight(3);
+		fill(255, 0, 0);
+		textAlign(CENTER);
+		textSize(60);
+		text("Game Ended", width / 2, height / 2 - 2 * blocks);
+		textSize(30);
+		noStroke();
+		strokeWeight(1);
+		fill(255);
+		text("Your Score: " + (lambi - 1), width / 2, height / 2 + blocks + 10);
+		fill(0, 255, 0);
+		textSize(30);
+		text("Level: " + (level + 1), width / 2, height / 2);
+		resetButton();
+		return;
+	}
+
 	resetButton();
 	if (level == 0) {
 		if (lambi - 1 > record1[0].score) {
@@ -461,6 +500,7 @@ function endScreen() {
 			);
 		}
 	}
+
 	stroke(255, 0, 0);
 	strokeWeight(3);
 	fill(255, 0, 0);
@@ -526,23 +566,30 @@ function saveResult() {
 }
 
 function resetButton() {
-	stroke(0);
-	fill(160);
-	rectMode(CENTER);
-	rect(width / 2 + 60, height / 2 + 60, 100, 30);
-	rect(width / 2 - 60, height / 2 + 60, 100, 30);
-	textSize(20);
-	if (end == 1 || end == 3) {
-		rect(width / 2, height / 2 + 100, 140, 30);
+	if (!noInternet) {
+		stroke(0);
+		fill(160);
+		rectMode(CENTER);
+		rect(width / 2 + 60, height / 2 + 60, 100, 30);
+		rect(width / 2 - 60, height / 2 + 60, 100, 30);
+		textSize(20);
+		if (end == 1 || end == 3) {
+			rect(width / 2, height / 2 + 100, 140, 30);
+			fill(0);
+			text("Highscore List", width / 2, height / 2 + 107);
+		}
 		fill(0);
-		text("Highscore List", width / 2, height / 2 + 107);
-	}
-	fill(0);
-	text("Restart", width / 2 + 60, height / 2 + 67);
-	if (end == 4 || end == 3) {
-		text("Back", width / 2 - 60, height / 2 + 67);
+		text("Restart", width / 2 + 60, height / 2 + 67);
+		if (end == 4 || end == 3) text("Back", width / 2 - 60, height / 2 + 67);
+		else text("Submit", width / 2 - 60, height / 2 + 67);
 	} else {
-		text("Submit", width / 2 - 60, height / 2 + 67);
+		stroke(0);
+		fill(160);
+		rectMode(CENTER);
+		rect(width / 2, height / 2 + 60, 100, 30);
+		fill(0);
+		textSize(20);
+		text("Restart", width / 2, height / 2 + 67);
 	}
 }
 
