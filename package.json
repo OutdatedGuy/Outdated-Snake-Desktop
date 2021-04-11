@@ -1,6 +1,6 @@
 {
 	"name": "Outdated-Snake",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"description": "Outdated Snake Game Using Electron",
 	"main": "index.js",
 	"scripts": {
@@ -9,14 +9,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/OutdatedGuy/Outdated-Snake.git"
+		"url": "git+https://github.com/OutdatedGuy/Outdated-Snake-Desktop.git"
 	},
 	"author": "OutdatedGuy",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/OutdatedGuy/Outdated-Snake/issues"
+		"url": "https://github.com/OutdatedGuy/Outdated-Snake-Desktop/issues"
 	},
-	"homepage": "https://github.com/OutdatedGuy/Outdated-Snake#readme",
+	"homepage": "https://github.com/OutdatedGuy/Outdated-Snake-Desktop#readme",
 	"devDependencies": {
 		"electron": "^12.0.2",
 		"electron-builder": "^22.10.5"
