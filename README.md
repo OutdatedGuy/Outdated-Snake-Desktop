@@ -1,14 +1,14 @@
 # Outdated-Snake
 
 An Outdated Snake Game App on Desktop  
-Desktop version setup [here](https://drive.google.com/drive/folders/1xxS7V_L8lY25YfEhznawBX0LxLYk7OFj?usp=sharing)  
+Latest Desktop version setup [here](https://github.com/OutdatedGuy/Outdated-Snake-Desktop/releases/download/v2.0.1/Outdated-Snake.Setup.2.0.1.exe)  
 
 # Start
 
 Create .env file with reference to .env.example  
 Run `npm install`  
 Run `npm start`  
-Run `npm dist` to develop the Game
+Run `npm run dist` to develop the Game
 
 # Development
 
