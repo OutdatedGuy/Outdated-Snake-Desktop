@@ -1,7 +1,7 @@
 # Outdated-Snake
 
 An Outdated Snake Game App on Desktop  
-Desktop Version Setup [here](https://github.com/OutdatedGuy/Outdated-Snake-Desktop/releases/latest/download/Outdated-Snake.Setup.exe)
+Desktop Version Setup [here](https://github.com/OutdatedGuy/Outdated-Snake-Desktop/releases/latest/download/Outdated-Snake.Setup.zip)
 
 # Start
 
