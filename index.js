@@ -4,7 +4,7 @@ const path = require("path");
 app.on("ready", () => {
 	const myWindow = new BrowserWindow({
 		show: false,
-		icon: "/build/icon.ico",
+		icon: "/Icon/favicon.ico",
 		webPreferences: {
 			nodeIntegration: true,
 		},
