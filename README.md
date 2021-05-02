@@ -12,7 +12,7 @@ Run `npm run dist` to develop the Game
 
 # Development
 
-Made using p5.js library, Node.js and electron  
+Made using [p5.js](https://p5js.org/) library, [Node.js](https://nodejs.org/) and [electron](https://www.electronjs.org/)  
 A desktop based server side snake game which can add your score to database and retrive to show highscore list
 
 [Original Game](https://outdated-snake.herokuapp.com)
