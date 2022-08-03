@@ -1,6 +1,6 @@
 {
 	"name": "Outdated-Snake",
-	"version": "2.2.2",
+	"version": "2.2.3",
 	"description": "Outdated Snake Game Using Electron",
 	"main": "index.js",
 	"scripts": {
