@@ -18,7 +18,7 @@
 	},
 	"homepage": "https://github.com/OutdatedGuy/Outdated-Snake-Desktop#readme",
 	"devDependencies": {
-		"electron": "^6.1.12",
+		"electron": "^20.0.2",
 		"electron-builder": "^23.3.3"
 	},
 	"dependencies": {
