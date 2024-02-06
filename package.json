@@ -12,7 +12,7 @@
 		"url": "git+https://github.com/OutdatedGuy/Outdated-Snake-Desktop.git"
 	},
 	"author": "OutdatedGuy",
-	"license": "ISC",
+	"license": "BSD-3-Clause",
 	"bugs": {
 		"url": "https://github.com/OutdatedGuy/Outdated-Snake-Desktop/issues"
 	},
