@@ -61,7 +61,7 @@ async function getScore() {
 		},
 	};
 	var response = await fetch(
-		"https://outdated-snake.herokuapp.com/getTheScore",
+		"https://outdated-snake.outdatedguy.rocks/getTheScore",
 		none
 	);
 	var SCORE = await response.json();
@@ -424,7 +424,7 @@ function nameSubmitted() {
 		},
 		body: JSON.stringify(data),
 	};
-	fetch("https://outdated-snake.herokuapp.com/api", options);
+	fetch("https://outdated-snake.outdatedguy.rocks/api", options);
 
 	end = 3;
 	submit = 1;
