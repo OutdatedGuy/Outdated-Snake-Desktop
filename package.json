@@ -29,6 +29,9 @@
 		"win": {
 			"target": "nsis",
 			"icon": "Icon/favicon.ico"
+		},
+		"mac": {
+			"icon": "Icon/favicon.icns"
 		}
 	}
 }
