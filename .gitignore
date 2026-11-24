@@ -1,4 +1,7 @@
 .env
+.env.*
+*.p8
 node_modules/
 dist/
 setup/
+.DS_Store

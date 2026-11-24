@@ -1,37 +1,58 @@
 {
-	"name": "outdated-snake",
-	"version": "3.0.0",
-	"description": "Outdated Snake Game Using Electron",
-	"main": "index.js",
-	"scripts": {
-		"start": "electron .",
-		"dist": "electron-builder build"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/OutdatedGuy/Outdated-Snake-Desktop.git"
-	},
-	"author": "OutdatedGuy",
-	"license": "BSD-3-Clause",
-	"bugs": {
-		"url": "https://github.com/OutdatedGuy/Outdated-Snake-Desktop/issues"
-	},
-	"homepage": "https://github.com/OutdatedGuy/Outdated-Snake-Desktop#readme",
-	"devDependencies": {
-		"electron": "^44.5.1",
-		"electron-builder": "^26.0.12"
-	},
-	"dependencies": {
-		"nodemon": "^3.0.3",
-		"path": "^0.12.7"
-	},
-	"build": {
-		"win": {
-			"target": "nsis",
-			"icon": "Icon/favicon.ico"
-		},
-		"mac": {
-			"icon": "Icon/favicon.icns"
-		}
-	}
+  "name": "outdated-snake",
+  "version": "4.0.0",
+  "description": "Outdated Snake Game Using Electron",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "dist:mac:arm": "source .env && electron-builder --mac --arm64",
+    "dist:mac:x64": "source .env && electron-builder --mac --x64",
+    "dist:win:arm": "electron-builder --win --arm64",
+    "dist:win:x64": "electron-builder --win --x64"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OutdatedGuy/Outdated-Snake-Desktop.git"
+  },
+  "author": "OutdatedGuy",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/OutdatedGuy/Outdated-Snake-Desktop/issues"
+  },
+  "homepage": "https://github.com/OutdatedGuy/Outdated-Snake-Desktop#readme",
+  "devDependencies": {
+    "electron": "^45.4.1",
+    "electron-builder": "^26.0.12",
+    "electron-reloader": "^2.0.0"
+  },
+  "type": "module",
+  "build": {
+    "appId": "rocks.outdatedguy.outdatedsnake",
+    "productName": "Outdated Snake",
+    "files": [
+      "**/*",
+      "!.env",
+      "!.env.*",
+      "!*.p8"
+    ],
+    "win": {
+      "artifactName": "${name}-windows-${arch}.${ext}",
+      "icon": "Icon/favicon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "mac": {
+      "artifactName": "${name}-macos-${arch}.${ext}",
+      "category": "public.app-category.games",
+      "entitlements": "entitlements.mac.plist",
+      "entitlementsInherit": "entitlements.mac.plist",
+      "hardenedRuntime": true,
+      "icon": "Icon/favicon.icns",
+      "notarize": true,
+      "target": [
+        "pkg"
+      ]
+    }
+  }
 }
