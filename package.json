@@ -41,21 +41,21 @@
     ],
     "win": {
       "artifactName": "${name}-windows-${arch}.${ext}",
-      "icon": "Icon/favicon.ico",
+      "icon": "build/favicon.ico",
       "target": [
         "nsis"
       ]
     },
     "nsis": {
-      "include": "installer.nsh"
+      "include": "build/installer.nsh"
     },
     "mac": {
       "artifactName": "${name}-macos-${arch}.${ext}",
       "category": "public.app-category.games",
-      "entitlements": "entitlements.mac.plist",
-      "entitlementsInherit": "entitlements.mac.plist",
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
       "hardenedRuntime": true,
-      "icon": "Icon/favicon.icns",
+      "icon": "build/favicon.icns",
       "notarize": true,
       "target": [
         "pkg"

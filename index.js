@@ -84,7 +84,7 @@ async function checkForUpdates(parentWindow) {
 function createWindow() {
   const myWindow = new BrowserWindow({
     show: false,
-    icon: path.join(__dirname, "Icon", "favicon.ico"),
+    icon: path.join(__dirname, "build", "favicon.ico"),
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
