@@ -25,6 +25,11 @@ async function setup() {
     assetsLoaded = true;
   }
 
+  if (!pingInterval) {
+    pingServer();
+    pingInterval = setInterval(pingServer, 10 * 60 * 1000);
+  }
+
   createCanvas(1080, 600);
   FoodX = width / 2;
   FoodY = height / 2;
@@ -245,12 +250,7 @@ function gameScreen() {
   stroke(255);
   strokeWeight(1);
   rectMode(CORNER);
-  rect(
-    blocks - 1,
-    blocks - 1,
-    width - 2 * blocks + 2,
-    height - 2 * blocks + 2
-  );
+  rect(blocks - 1, blocks - 1, width - 2 * blocks + 2, height - 2 * blocks + 2);
   fill(170);
   rect(70, 2, 60, 15);
   fill(0);
@@ -396,7 +396,7 @@ async function nameSubmitted() {
       },
       body: JSON.stringify(data),
     });
-  } catch (_) { }
+  } catch (_) {}
 
   end = 3;
   submit = 1;
@@ -483,7 +483,7 @@ function highscoreScreen() {
       text(
         idx + 1 + ". " + records[idx].name + ": " + records[idx].score,
         columns[col],
-        (i + 5) * (blocks + 4)
+        (i + 5) * (blocks + 4),
       );
     }
   }
@@ -517,4 +517,13 @@ function validName() {
 
   inputName.value(naam);
   return true;
+}
+
+async function pingServer() {
+  if (document.hidden) return;
+  try {
+    await fetch("https://outdated-snake.outdatedguy.rocks/ping", {
+      cache: "no-store",
+    });
+  } catch (_) {}
 }
