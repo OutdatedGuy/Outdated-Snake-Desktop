@@ -46,6 +46,9 @@
         "nsis"
       ]
     },
+    "nsis": {
+      "include": "installer.nsh"
+    },
     "mac": {
       "artifactName": "${name}-macos-${arch}.${ext}",
       "category": "public.app-category.games",
