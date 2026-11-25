@@ -30,6 +30,9 @@
   "build": {
     "appId": "rocks.outdatedguy.outdatedsnake",
     "productName": "Outdated Snake",
+    "electronLanguages": [
+      "en-US"
+    ],
     "files": [
       "**/*",
       "!.env",
