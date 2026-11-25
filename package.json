@@ -1,5 +1,6 @@
 {
   "name": "outdated-snake",
+  "productName": "Outdated Snake",
   "version": "4.0.0",
   "description": "Outdated Snake Game Using Electron",
   "main": "index.js",
